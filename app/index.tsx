@@ -17,33 +17,36 @@ const Index = () => {
   }, [searchTerm]);
 
   return (
-    <SafeAreaView className="bg-white h-full">
-      <StatusBar barStyle="dark-content" />
-      <View className="p-[15px]">
-        <TextInput
-          placeholder="search"
-          value={searchTerm}
-          onChangeText={setSearchTerm}
-          className="bg-gray-200/60 border border-gray-200 px-3 py-2 rounded-lg text-lg"
-        />
+    <>
+      <StatusBar barStyle="light-content" backgroundColor="white" />{" "}
+      <SafeAreaView className="bg-white h-full">
+        <StatusBar barStyle="dark-content" />
+        <View className="p-[15px]">
+          <TextInput
+            placeholder="search"
+            value={searchTerm}
+            onChangeText={setSearchTerm}
+            className="bg-gray-200/60 border border-gray-200 px-3 py-2 rounded-lg text-lg"
+          />
 
-        <FlatList
-          data={filteredContacts}
-          renderItem={({ item }) => {
-            return (
-              <View>
-                <Link href={"/calling"} className="text-[16px] my-[10px]">
-                  {item.user_display_name}
-                </Link>
-              </View>
-            );
-          }}
-          ItemSeparatorComponent={() => (
-            <View className="h-[1px] w-full bg-[#f0f0f0]" />
-          )}
-        />
-      </View>
-    </SafeAreaView>
+          <FlatList
+            data={filteredContacts}
+            renderItem={({ item }) => {
+              return (
+                <View>
+                  <Link href={"/calling"} className="text-[16px] my-[10px]">
+                    {item.user_display_name}
+                  </Link>
+                </View>
+              );
+            }}
+            ItemSeparatorComponent={() => (
+              <View className="h-[1px] w-full bg-[#f0f0f0]" />
+            )}
+          />
+        </View>
+      </SafeAreaView>
+    </>
   );
 };
 
