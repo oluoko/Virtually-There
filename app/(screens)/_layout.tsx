@@ -5,7 +5,7 @@ const ScreensLayout = () => {
     <Stack
       screenOptions={{
         headerShown: false,
-        contentStyle: { backgroundColor: "black" },
+        contentStyle: { backgroundColor: "transparent" },
         animation: "slide_from_right",
       }}
     >

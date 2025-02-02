@@ -6,7 +6,7 @@ const RootLayout = () => {
     <Stack
       screenOptions={{
         headerShown: false,
-        contentStyle: { backgroundColor: "white" },
+        contentStyle: { backgroundColor: "transparent" },
         animation: "slide_from_right",
       }}
     >
