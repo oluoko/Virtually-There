@@ -10,7 +10,7 @@ const CallActionBox = ({ className }) => {
   const route = useRouter();
 
   const onReverseCamera = () => {
-    route.replace("/");
+    route.replace("/(screens)/incoming-call");
   };
 
   const onVideoHangup = () => {
