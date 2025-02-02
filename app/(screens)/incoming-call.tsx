@@ -5,10 +5,11 @@ import {
   ImageBackground,
   Easing,
   Animated,
+  Pressable,
 } from "react-native";
 import React, { useEffect, useRef } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -18,6 +19,20 @@ import bg from "../../assets/images/ios_bg.png";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 const IncomingCall = () => {
+  const router = useRouter();
+  const onDecline = () => {
+    router.replace("/(screens)/calling");
+  };
+  const onAccept = () => {
+    router.replace("/(screens)/calling");
+  };
+  const onRemindMe = () => {
+    router.replace("/(screens)/calling");
+  };
+  const onMessage = () => {
+    router.replace("/(screens)/calling");
+  };
+
   const icons = [
     {
       id: 1,
@@ -25,6 +40,7 @@ const IncomingCall = () => {
       name: "x",
       size: 32,
       label: "Decline",
+      clickEvent: onDecline,
     },
     {
       id: 2,
@@ -32,6 +48,7 @@ const IncomingCall = () => {
       name: "check",
       size: 34,
       label: "Accept",
+      clickEvent: onAccept,
     },
   ];
 
@@ -42,6 +59,7 @@ const IncomingCall = () => {
       name: "alarm",
       size: 22,
       label: "Remind Me",
+      clickEvent: onRemindMe,
     },
     {
       id: 2,
@@ -49,6 +67,7 @@ const IncomingCall = () => {
       name: "message-processing",
       size: 20,
       label: "Message",
+      clickEvent: onMessage,
     },
   ];
 
@@ -107,48 +126,52 @@ const IncomingCall = () => {
               Incoming Call: +254 112 558 808
             </Text>
           </View>
-          <View className="w-[80%] mb-[85px] flex-row justify-between">
+          <View className="w-[80%] mb-[80px] flex-row justify-between">
             {callOptions.map((icon, index) => (
-              <Link href={"/calling"} key={icon.id}>
-                <View className="flex items-center justify-center flex-col">
-                  <icon.provider
-                    name={icon.name}
-                    size={icon.size}
-                    color="white"
-                  />
-                  <Text className="text-white text-[10px] mt-3 text-center w-20">
-                    {icon.label}
-                  </Text>
-                </View>
-              </Link>
+              <Pressable
+                key={icon.id}
+                onPress={icon.clickEvent}
+                className="flex items-center justify-center flex-col"
+              >
+                <icon.provider
+                  name={icon.name}
+                  size={icon.size}
+                  color="white"
+                />
+                <Text className="text-white text-[12px] mt-3 text-center w-20">
+                  {icon.label}
+                </Text>
+              </Pressable>
             ))}
           </View>
           <View className="w-[80%] mb-[70px] flex-row justify-between">
             {icons.map((icon, index) => (
-              <Link href={"/calling"} key={icon.id}>
-                <View className="flex items-center justify-center flex-col">
-                  <Animated.View
-                    style={{
-                      transform: [{ translateY: bounceAnimations[index] }],
-                    }}
+              <Pressable
+                key={icon.id}
+                onPress={icon.clickEvent}
+                className="flex items-center justify-center flex-col "
+              >
+                <Animated.View
+                  style={{
+                    transform: [{ translateY: bounceAnimations[index] }],
+                  }}
+                >
+                  <View
+                    className={`rounded-full size-[65px] flex items-center justify-center animate-bounce ${
+                      icon.label === "Decline" ? "bg-red-600" : "bg-green-600"
+                    }`}
                   >
-                    <View
-                      className={`rounded-full size-[65px] flex items-center justify-center animate-bounce ${
-                        icon.label === "Decline" ? "bg-red-600" : "bg-green-600"
-                      }`}
-                    >
-                      <icon.provider
-                        name={icon.name}
-                        size={icon.size}
-                        color="white"
-                      />
-                    </View>
-                  </Animated.View>
-                  <Text className="text-white text-[20px] font-bold mt-3 w-20 text-center">
-                    {icon.label}
-                  </Text>
-                </View>
-              </Link>
+                    <icon.provider
+                      name={icon.name}
+                      size={icon.size}
+                      color="white"
+                    />
+                  </View>
+                </Animated.View>
+                <Text className="text-white text-[20px] font-bold mt-3 w-20 text-center">
+                  {icon.label}
+                </Text>
+              </Pressable>
             ))}
           </View>
         </SafeAreaView>
