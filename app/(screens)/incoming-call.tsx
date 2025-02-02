@@ -21,16 +21,16 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 const IncomingCall = () => {
   const router = useRouter();
   const onDecline = () => {
-    router.replace("/(screens)/calling");
+    router.replace("/(screens)/on-call");
   };
   const onAccept = () => {
-    router.replace("/(screens)/calling");
+    router.replace("/(screens)/on-call");
   };
   const onRemindMe = () => {
-    router.replace("/(screens)/calling");
+    router.replace("/(screens)/on-call");
   };
   const onMessage = () => {
-    router.replace("/(screens)/calling");
+    router.replace("/(screens)/on-call");
   };
 
   const icons = [

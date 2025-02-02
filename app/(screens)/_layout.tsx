@@ -11,6 +11,7 @@ const ScreensLayout = () => {
     >
       <Stack.Screen name="calling" />
       <Stack.Screen name="incoming-call" />
+      <Stack.Screen name="on-call" />
     </Stack>
   );
 };
