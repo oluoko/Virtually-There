@@ -16,7 +16,7 @@ const OnCall = () => {
         className=" h-full relative px-2
       "
       >
-        <View className="absolute bg-gray-200/60 border border-gray-200 rounded-xl top-10 right-5 w-1/3 h-[180px]"></View>
+        <View className="absolute bg-gray-800/20 border border-gray-800 rounded-xl top-10 right-5 w-1/3 h-[180px]"></View>
         <Text className="text-white ">onCall</Text>
         <CallActionBox className={"bg-transparent absolute bottom-8 w-full"} />
       </SafeAreaView>
