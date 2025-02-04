@@ -13,12 +13,12 @@ const OnCall = () => {
       />
 
       <SafeAreaView
-        className=" h-full relative px-2
+        className=" h-full relative flex items-center
       "
       >
         <View className="absolute bg-gray-800/20 border border-gray-800 rounded-xl top-10 right-5 w-1/3 h-[180px]"></View>
         <Text className="text-white ">onCall</Text>
-        <CallActionBox className={"bg-transparent absolute bottom-8 w-full"} />
+        <CallActionBox className={"bg-transparent absolute bottom-8 w-[90%]"} />
       </SafeAreaView>
     </View>
   );

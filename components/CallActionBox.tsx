@@ -1,5 +1,5 @@
 import { View, Text, Pressable } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
@@ -8,16 +8,23 @@ import { Link, useRouter } from "expo-router";
 
 const CallActionBox = ({ className }) => {
   const route = useRouter();
+  const [isCameraReverse, setIsCameraReverse] = useState(true);
+  const [isMicrophoneMuted, setIsMicrophoneMuted] = useState(true);
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
 
   const onReverseCamera = () => {
-    route.replace("/(screens)/incoming-call");
+    // route.replace("/(screens)/incoming-call");
+
+    setIsCameraReverse((currentValue) => !currentValue);
   };
 
   const onVideoHangup = () => {
-    route.replace("/");
+    setIsVideoMuted((currentValue) => !currentValue);
+    // route.replace("/");
   };
   const onMicrophoneClick = () => {
-    route.replace("/");
+    setIsMicrophoneMuted((currentValue) => !currentValue);
+    // route.replace("/");
   };
   const onPhoneHangup = () => {
     route.replace("/");
@@ -28,22 +35,25 @@ const CallActionBox = ({ className }) => {
       id: 1,
       provider: Ionicons,
       name: "camera-reverse",
-      size: 32,
+      size: isCameraReverse ? 32 : 28,
       clickEvent: onReverseCamera,
+      color: isCameraReverse ? "white" : "#4a4a4a",
     },
     {
       id: 2,
       provider: FontAwesome5,
       name: "video-slash",
-      size: 26,
+      size: isVideoMuted ? 26 : 22,
       clickEvent: onVideoHangup,
+      color: isVideoMuted ? "white" : "#4a4a4a",
     },
     {
       id: 3,
       provider: FontAwesome6,
       name: "microphone",
-      size: 26,
+      size: isMicrophoneMuted ? 26 : 22,
       clickEvent: onMicrophoneClick,
+      color: isMicrophoneMuted ? "white" : "#4a4a4a",
     },
     {
       id: 4,
@@ -51,6 +61,7 @@ const CallActionBox = ({ className }) => {
       name: "phone-hangup",
       size: 34,
       clickEvent: onPhoneHangup,
+      color: "white",
     },
   ];
 
@@ -59,11 +70,15 @@ const CallActionBox = ({ className }) => {
       {icons.map((icon) => (
         <Pressable onPress={icon.clickEvent} key={icon.id}>
           <View
-            className={`rounded-full size-[65px] flex items-center justify-center ${
-              icon.name === "phone-hangup" ? "bg-red-600" : "bg-[#4a4a4a]"
+            className={`rounded-full size-[65px] flex items-center justify-center  ${
+              icon.name === "phone-hangup" && "bg-red-600"
             }`}
           >
-            <icon.provider name={icon.name} size={icon.size} color="white" />
+            <icon.provider
+              name={icon.name}
+              size={icon.size}
+              color={icon.color}
+            />
           </View>
         </Pressable>
       ))}
