@@ -28,28 +28,28 @@ const CallActionBox = ({ className }) => {
       id: 1,
       provider: Ionicons,
       name: "camera-reverse",
-      size: 28,
+      size: 32,
       clickEvent: onReverseCamera,
     },
     {
       id: 2,
       provider: FontAwesome5,
       name: "video-slash",
-      size: 24,
+      size: 26,
       clickEvent: onVideoHangup,
     },
     {
       id: 3,
       provider: FontAwesome6,
       name: "microphone",
-      size: 24,
+      size: 26,
       clickEvent: onMicrophoneClick,
     },
     {
       id: 4,
       provider: MaterialCommunityIcons,
       name: "phone-hangup",
-      size: 32,
+      size: 34,
       clickEvent: onPhoneHangup,
     },
   ];
@@ -57,16 +57,14 @@ const CallActionBox = ({ className }) => {
   return (
     <View className={` p-3  flex-row justify-between ${className}`}>
       {icons.map((icon) => (
-        <Pressable
-          onPress={icon.clickEvent}
-          key={icon.id}
-          className={`rounded-full size-[45px] flex items-center justify-center ${
-            icon.name === "phone-hangup" ? "bg-red-600" : "bg-[#4a4a4a]"
-          }`}
-        >
-          <Link href={"/incoming-call"}>
+        <Pressable onPress={icon.clickEvent} key={icon.id}>
+          <View
+            className={`rounded-full size-[65px] flex items-center justify-center ${
+              icon.name === "phone-hangup" ? "bg-red-600" : "bg-[#4a4a4a]"
+            }`}
+          >
             <icon.provider name={icon.name} size={icon.size} color="white" />
-          </Link>
+          </View>
         </Pressable>
       ))}
     </View>

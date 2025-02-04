@@ -23,7 +23,7 @@ const Index = () => {
         <StatusBar barStyle="dark-content" />
         <View className="p-[15px]">
           <TextInput
-            placeholder="search"
+            placeholder="Search..."
             value={searchTerm}
             onChangeText={setSearchTerm}
             className="bg-gray-200/60 border border-gray-200 px-3 py-2 rounded-lg text-lg"
@@ -35,7 +35,7 @@ const Index = () => {
               return (
                 <View>
                   <Link href={"/calling"} className="text-[16px] my-[10px]">
-                    {item.user_display_name}
+                    <Text> {item.user_display_name}</Text>
                   </Link>
                 </View>
               );
