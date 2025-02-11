@@ -12,7 +12,7 @@ const RootLayout = () => {
       }}
     >
       <NavigationContainer>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="index" />
         <Stack.Screen name="(screens)" options={{ headerShown: false }} />
       </NavigationContainer>
     </Stack>

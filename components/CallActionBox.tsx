@@ -16,6 +16,7 @@ const CallActionBox = ({ className }) => {
     // route.replace("/(screens)/incoming-call");
 
     setIsCameraReverse((currentValue) => !currentValue);
+    route.replace("/(screens)/incoming-call");
   };
 
   const onVideoHangup = () => {

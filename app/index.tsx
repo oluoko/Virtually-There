@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, StatusBar, Text, TextInput, View } from "react-native";
+import {
+  FlatList,
+  Pressable,
+  StatusBar,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import dummyContacts from "../assets/data/contacts.json";
 import { Link } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 const Index = () => {
+  const navigation = useNavigation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredContacts, setFilteredContacts] = useState(dummyContacts);
 
@@ -16,12 +25,16 @@ const Index = () => {
     setFilteredContacts(newContacts);
   }, [searchTerm]);
 
+  const callUser = (user) => {
+    navigation.navigate("/(screens)/calling", { user });
+  };
+
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="white" />{" "}
       <SafeAreaView className="bg-white h-full">
         <StatusBar barStyle="dark-content" />
-        <View className="p-[15px]">
+        <View className="p-[15px] flex-1">
           <TextInput
             placeholder="Search..."
             value={searchTerm}
@@ -34,9 +47,12 @@ const Index = () => {
             renderItem={({ item }) => {
               return (
                 <View>
-                  <Link href={"/calling"} className="text-[16px] my-[10px]">
+                  <Pressable
+                    onPress={callUser(item)}
+                    className="text-[16px] my-[10px]"
+                  >
                     <Text> {item.user_display_name}</Text>
-                  </Link>
+                  </Pressable>
                 </View>
               );
             }}
