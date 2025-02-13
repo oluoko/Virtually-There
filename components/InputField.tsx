@@ -40,7 +40,7 @@ const InputField = ({
               <Image source={icon} className={`size-6  ml-4 ${iconStyle}`} />
             )}
             <TextInput
-              className={`rounded-full p-4 font-JakartaSemiBold text-[15px] flex-1 text-left  ${inputStyle}`}
+              className={`rounded-full border p-4 font-JakartaSemiBold text-[15px] flex-1 text-left  ${inputStyle}`}
               secureTextEntry={label === "Password" && !showPassword}
               {...props}
             />

@@ -18,8 +18,8 @@ const welcome = () => {
         />
         <CustomButton
           title={"Get Started"}
-          onPress={() => router.replace("/(auth)/sign-up")}
-          className="w-10/12 h-[50px] text-xl mt-10 mb-5 bg-[#0286FF]"
+          onPress={() => router.replace("/(auth)/sign-in")}
+          className="w-10/12 h-[50px]  mt-10 mb-5 bg-blue-500"
         />
       </SafeAreaView>
     </>

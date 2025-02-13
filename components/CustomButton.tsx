@@ -53,9 +53,7 @@ const CustomButton = ({
       {...props}
     >
       {IconLeft && <IconLeft />}
-      <Text
-        className={`text-2xl font-bold ${getTextVariantStyle(textVariant)}`}
-      >
+      <Text className={`text-xl font-bold ${getTextVariantStyle(textVariant)}`}>
         {title}
       </Text>
       {IconRight && <IconRight />}
